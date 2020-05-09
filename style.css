@@ -1,10 +1,6 @@
-a:active {
-    background-color: yellow;
-    color: yellow;
-  }
-
 a:hover{
     background-color: silver;
+    opacity:0.7;
 }
 a{
     border-radius: 5%;
