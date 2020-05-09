@@ -1,0 +1,11 @@
+a:active {
+    background-color: yellow;
+    color: yellow;
+  }
+
+a:hover{
+    background-color: silver;
+}
+a{
+    border-radius: 5%;
+}
