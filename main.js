@@ -27,23 +27,29 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("div-for-container").appendChild(container2);
 
             // create fetch data function
+            // display loader
+            
+
             async function fetchJson(a) {
-                let topicsArray2 = ["world", "us", "technology", "arts", "science", "buisness", "politics", "books"];
+                
+                let topicsArray2 = ["world", "us", "technology", "arts", "science", "business", "politics", "books"];
                 let resultResponse = await fetch("https://api.nytimes.com/svc/topstories/v2/" + topicsArray2[a] + ".json?api-key=WsOCtTq7AoDFslivWkOM4g77HfGofHZI");
                 let data = await resultResponse.json();
                 let len = data.results.length;
                 globalObj.result = data;
-
+                document.getElementById("loader").setAttribute("style","display: none;");   
                 for (let newsCount = 0; newsCount < len; newsCount++) {
                     createRow(newsCount);
                     createCard(newsCount);
                 }
+                
             }
             // check if aria attribute of anchor tag  is expanded
             let x = document.getElementById(anchorIDs[numIndex]).getAttribute("aria-expanded");
             if (x == "false") {
+                document.getElementById("loader").setAttribute("style","display: inline-block;");
                 fetchJson(numIndex);
-            }
+                }
 
         }) // event listner function ends here
 
@@ -51,7 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 }) // document eventlistner on DOMContentsLoaded
 
-
+// loader
+function hideLoader() {
+    $('#loading').hide();   
+    // document.getElementById("loader").style.display = "inline:block";
+}
 
 
 
